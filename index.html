@@ -14,22 +14,32 @@
 </head>
 <body>
     <div id="app">
-        <section class="slider">
-            <div class="prev">
+        <section class="slider"
+            v-on:mouseenter="stopLoop"
+            v-on:mouseleave="startLoop"
+        >
+            <div class="prev" @click="prevPhoto">
                 <div class="fas fa-arrow-left"></div>
             </div>
             <div class="images">
-                <img src="./img/img1.jpg" alt="">
+                <!-- <img src="./img/img1.jpg" alt=""> -->
+                <img :src="photos[indexPhoto]" alt="">
             </div>
-            <div class="next">
+            <div class="next" @click="nextPhoto" >
                 <div class="fas fa-arrow-right"></div>
             </div>
             <div class="nav">
-                <i class="fas fa-circle active"></i>
+                <!-- <i class="fas fa-circle active"></i>
                 <i class="fas fa-circle"></i>
                 <i class="fas fa-circle"></i>
-                <i class="fas fa-circle"></i>
+                <i class="fas fa-circle"></i> -->
+                <i v-for="(foto, index) in photos" 
+                    class="fas fa-circle"
+                    v-bind:class="{active: index == indexPhoto}"
+                    v-on:click="setPhoto(index)"
+                >{{index}}</i>
             </div>
+           
         </section>
     </div>
 
