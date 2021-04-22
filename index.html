@@ -17,6 +17,11 @@
         <section class="slider"
             v-on:mouseenter="stopLoop"
             v-on:mouseleave="startLoop"
+            @keyup.left = "prevPhoto"
+            @keyup.right = "nextPhoto"
+            tabindex="0"
+            ref = "slider"
+
         >
             <div class="prev" @click="prevPhoto">
                 <div class="fas fa-arrow-left"></div>

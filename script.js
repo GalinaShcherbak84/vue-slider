@@ -37,9 +37,11 @@ const app = new Vue({
             this.intervalID = setInterval(() => {
                 this.nextPhoto();
             }, 2000);
+            this.$refs.slider.blur();
         },
         stopLoop(){
             clearInterval(this.intervalID);
+            this.$refs.slider.focus();
         }
     }
 });
